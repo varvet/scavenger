@@ -1,0 +1,19 @@
+<% environment.context_class.instance_eval { include Scavenger::ViewHelpers } %>
+
+(function() {
+  function requestListener () {
+    document.body.insertAdjacentHTML('afterbegin', this.responseText);
+    document.body.children[0].style.display = 'none';
+  }
+
+  function requestSprite() {
+    var oReq = new XMLHttpRequest();
+    oReq.addEventListener('load', requestListener);
+    oReq.open('GET', '<%= scavenger_sprite_path %>');
+    oReq.send();
+  }
+
+  requestSprite();
+})();
+
+console.log('wat');

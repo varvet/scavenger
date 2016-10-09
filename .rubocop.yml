@@ -1,0 +1,17 @@
+Rails:
+  Enabled: true
+
+Documentation:
+  Enabled: false
+
+Metrics/LineLength:
+  Max: 120
+
+Metrics/ClassLength:
+  Max: 300
+
+Metrics/MethodLength:
+  Max: 25
+
+Style/StringLiterals:
+  EnforcedStyle: double_quotes

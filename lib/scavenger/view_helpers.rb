@@ -9,7 +9,7 @@ module Scavenger
     end
 
     def svg(ref, options = {})
-      options[:class] = ref if options[:class] == nil
+      options[:class] = "#{Scavenger::Config.class_prefix}#{ref}" if options[:class].nil?
       content_tag :svg, "<use xlink:href=\"##{ref}\"/>".html_safe, options
     end
 

@@ -3,6 +3,21 @@ ENV["RAILS_ENV"] = "test"
 
 require File.expand_path("../../test/dummy/config/environment.rb", __FILE__)
 require "rails/test_help"
+require "capybara/rails"
+
+class ActionDispatch::IntegrationTest
+  # Make the Capybara DSL available in all integration tests
+  include Capybara::DSL
+
+  Capybara.ignore_hidden_elements = false
+
+  # Reset sessions and driver between tests
+  # Use super wherever this method is redefined in your individual test classes
+  def teardown
+    Capybara.reset_sessions!
+    Capybara.use_default_driver
+  end
+end
 
 # Filter out Minitest backtrace while allowing backtrace from other libraries
 # to be shown.

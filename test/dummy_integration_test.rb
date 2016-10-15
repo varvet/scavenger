@@ -7,6 +7,8 @@ class DummyIntegrationTest < ActionDispatch::IntegrationTest
 
   def test_svg_helper_and_sheet
     visit("/")
+    page.save_and_open_page
+
     assert page.has_css?("svg symbol#hejsna")
     assert page.has_css?("svg.hejsna")
   end

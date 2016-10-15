@@ -36,6 +36,7 @@ module Scavenger
       doc = Nokogiri::XML(File.open(filename), &:noblanks)
       doc = doc.remove_namespaces!.root
       remove_comments(doc)
+      convert_defs(doc)
       remove_tags(doc)
       remove_ids(doc)
       symbolize(doc, id)
@@ -46,6 +47,13 @@ module Scavenger
 
     def remove_comments(doc)
       doc.xpath("//comment()").remove
+    end
+
+    def convert_defs(doc)
+      doc.css("defs").each do |tag|
+        return tag.remove if tag.content.strip == ""
+        tag.name = "g"
+      end
     end
 
     def remove_tags(doc)

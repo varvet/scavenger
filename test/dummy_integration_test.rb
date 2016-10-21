@@ -1,10 +1,6 @@
 require "test_helper"
 
 class DummyIntegrationTest < ActionDispatch::IntegrationTest
-  def setup
-    Scavenger::Config.class_prefix = nil
-  end
-
   def test_svg_helper_and_sheet
     visit("/")
     assert page.has_css?("svg symbol#hejsna")
@@ -15,5 +11,6 @@ class DummyIntegrationTest < ActionDispatch::IntegrationTest
     Scavenger::Config.class_prefix = "icon-"
     visit("/")
     assert page.has_selector?("svg.icon-hejsna")
+    Scavenger::Config.class_prefix = nil
   end
 end

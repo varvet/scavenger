@@ -1,0 +1,4 @@
+bundler_args: --without debug
+cache: bundler
+script: "bundle exec rake test"
+sudo: false

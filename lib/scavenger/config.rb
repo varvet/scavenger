@@ -4,10 +4,9 @@ module Scavenger
       attr_accessor :svg_directory
       attr_accessor :sprite_path
       attr_accessor :class_prefix
+      attr_accessor :aspect_ratio
     end
 
-    self.svg_directory = nil
-    self.sprite_path = nil
-    self.class_prefix = nil
+    self.aspect_ratio = "xMinYMin meet"
   end
 end

@@ -64,7 +64,7 @@ module Scavenger
       end
       doc.name = "symbol"
       doc["id"] = id.chomp(".svg")
-      doc["preserveAspectRatio"] = "xMinYMin meet"
+      doc["preserveAspectRatio"] = Scavenger::Config.aspect_ratio
     end
   end
 end

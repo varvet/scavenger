@@ -17,9 +17,9 @@ Gem::Specification.new do |s|
   s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.md"]
   s.test_files = Dir["test/**/*"]
 
-  s.add_dependency "rails", "~> 4.2.6"
-  s.add_dependency "nokogiri", "~> 1.6.0"
-  s.add_dependency "capybara", "~> 2.10.1"
+  s.add_dependency "rails", "~> 4.2"
+  s.add_dependency "nokogiri", "~> 1.6"
+  s.add_dependency "capybara", "~> 2.10"
 
-  s.add_development_dependency "pry"
+  s.add_development_dependency "pry", "~> 0.10"
 end

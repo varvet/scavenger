@@ -13,4 +13,16 @@ class DummyIntegrationTest < ActionDispatch::IntegrationTest
     assert page.has_selector?("svg.icon-hejsna")
     Scavenger::Config.class_prefix = nil
   end
+
+  def test_default_aspect_ratio
+    visit("/")
+    assert page.has_css?("#hejsna[preserveaspectratio='xMinYMin meet']")
+  end
+
+  def test_configured_aspect_ratio
+    Scavenger::Config.aspect_ratio = "xMaxYMax meet"
+    visit("/")
+    assert page.has_css?("#hejsna[preserveaspectratio='xMaxYMax meet']")
+    Scavenger::Config.aspect_ratio = "xMinYMin meet"
+  end
 end

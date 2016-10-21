@@ -8,12 +8,16 @@ A Rails plugin for turning a directory of svg images into a bunch of `<symbol>` 
 ## Getting started
 
 Put the gem in your `Gemfile` and run `bundle install`:
-`gem "scavenger"`
+```ruby
+gem "scavenger"
+```
 
 Create a folder called `app/assets/svg` and put your svg images there.
 
 Add the following to `views/layouts/application.html.erb`:
-`<%= svg_sprite_sheet %>`
+```ruby
+<%= svg_sprite_sheet %>
+```
 
 Now you can refer to your svg images by their name, so if you have `hejsna.svg` sitting in your svg directory, you can make it show up by writing `<%= svg "hejsna" %>`.
 
@@ -26,7 +30,9 @@ Scavenger works by inserting svg tags with references to ids defined in the spri
 ## Loading the sprite sheet asynchronously
 
 Scavenger comes with a dependency-free javascript for fetching and injecting the sprite sheet into the DOM. This is a  good idea since the sprite sheet can be served from your reverse proxy and cached by the browser. Extra useful if you have a lot of symbols and don't want to bloat every page, but the downside is that users may experience a brief flash of missing icons. To use this javascript, remove the `<%= svg_sprite_sheet %>` helper from your layout and instead include the javascript in your `application.js` like so:
-`//= require scavenger`
+```javascript
+//= require scavenger
+```
 
 
 ## Configuration
@@ -37,13 +43,17 @@ You can configure Scavenger to do your bidding. Create a file called `config/ini
 ### Use another directory
 
 Default is `app/assets/svg` but it can be changed with the following directive:
-`Scavenger::Config.svg_directory = Rails.root.join("app", "assets", "my_directory")`
+```ruby
+Scavenger::Config.svg_directory = Rails.root.join("app", "assets", "my_directory")
+```
 
 
 ### Put the compiled sprite sheet somewhere else
 
 Default is `app/assets/images/sprite.svg` but it can be changed with the following directive:
-`Scavenger::Config.sprite_path = Rails.root.join("app", "assets", "my_directory", "my_file.svg")`
+```ruby
+Scavenger::Config.sprite_path = Rails.root.join("app", "assets", "my_directory", "my_file.svg")
+```
 
 
 ### Set a default prefix on your svg classes
@@ -54,7 +64,9 @@ The svg references will get their name as the default classname, so `hejsna.svg`
 ### Change how aspect ratio is preserved
 
 Default is `"xMinYMin meet"` but it can be changed with the following directive:
-`Scavenger::Config.aspect_ratio = "xMaxYMax meet"`
+```ruby
+Scavenger::Config.aspect_ratio = "xMaxYMax meet"
+```
 
 A full list of options for this directive can be found [here](https://developer.mozilla.org/en/docs/Web/SVG/Attribute/preserveAspectRatio).
 

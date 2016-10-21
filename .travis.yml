@@ -1,4 +1,7 @@
-bundler_args: --without debug
+bundler_args: --without development
 cache: bundler
 script: "bundle exec rake test"
 sudo: false
+
+rvm:
+  - 2.2

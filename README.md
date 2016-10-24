@@ -1,7 +1,7 @@
 # Scavenger
 
 ![Version](https://img.shields.io/gem/v/scavenger.svg)
-![Build status](https://img.shields.io/travis/johanhalse/scavenger.svg)
+![Build status](https://img.shields.io/travis/varvet/scavenger.svg)
 
 A Rails plugin for turning a directory of svg images into a bunch of `<symbol>` tags in a sprite sheet and using them by reference. The main advantage of using `<symbol>` is that you can define a viewBox for each element, which means it's possible to reuse and resize them and still make them occupy the space you'd expect them to. A common use case would be icons.
 

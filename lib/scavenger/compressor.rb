@@ -24,7 +24,8 @@ module Scavenger
 
     def compress_dir
       sheet = Dir.entries(@path)
-                 .select { |f| !File.directory? f }
+                 .select { |f| should_compress? f }
+                 .sort
                  .map { |f| compress_file(File.join(@path, f), f) }
                  .join("")
 
@@ -43,6 +44,11 @@ module Scavenger
     end
 
     private
+
+    def should_compress?(filename)
+      !File.directory?(filename) &&
+        !File.basename(filename).start_with?('.')
+    end
 
     def remove_comments(doc)
       doc.xpath("//comment()").remove

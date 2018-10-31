@@ -24,7 +24,7 @@ module Scavenger
 
     def compress_dir
       sheet = Dir.entries(@path)
-                 .select { |f| !File.directory? f }
+                 .select { |f| (!File.directory?(f) && !f.match(/^\./)) }
                  .map { |f| compress_file(File.join(@path, f), f) }
                  .join("")
 

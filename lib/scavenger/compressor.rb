@@ -69,7 +69,7 @@ module Scavenger
         attribute.remove unless attribute.name == "viewBox"
       end
       doc.name = "symbol"
-      doc["id"] = id.chomp(".svg")
+      doc["id"] = Scavenger::Config.id_prefix + id.chomp(".svg")
       doc["preserveAspectRatio"] = Scavenger::Config.aspect_ratio
     end
   end

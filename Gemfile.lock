@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    scavenger (0.2.0)
+    scavenger (0.2.1)
       nokogiri (~> 1.10)
       rails (>= 4.2)
 

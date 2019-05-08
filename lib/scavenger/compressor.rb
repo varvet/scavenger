@@ -23,18 +23,20 @@ module Scavenger
     end
 
     def compress_dir
-      sheet = Dir.entries(@path)
+      sheet = Dir.glob(File.join(@path, "**/*.svg"))
                  .select { |f| should_compress? f }
                  .sort
-                 .map { |f| compress_file(File.join(@path, f), f) }
+                 .map { |f| f.sub(%r{^#{@path}/?}, "") }
+                 .map { |f| compress_file(f) }
                  .join("")
 
       File.write(Scavenger::Config.sprite_path, "<svg>#{sheet}</svg>") unless Scavenger::Config.sprite_path.nil?
       sheet
     end
 
-    def compress_file(filename, id)
-      doc = Nokogiri::XML(File.open(filename), &:noblanks)
+    def compress_file(filename)
+      id = filename.gsub(%r{/}, "--")
+      doc = Nokogiri::XML(File.open(File.join(@path, filename)), &:noblanks)
       doc = doc.remove_namespaces!.root
       remove_comments(doc)
       remove_tags(doc)
@@ -47,7 +49,7 @@ module Scavenger
 
     def should_compress?(filename)
       !File.directory?(filename) &&
-        !File.basename(filename).start_with?('.')
+        !File.basename(filename).start_with?(".")
     end
 
     def remove_comments(doc)

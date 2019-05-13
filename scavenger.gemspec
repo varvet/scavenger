@@ -7,7 +7,7 @@ require "scavenger/version"
 Gem::Specification.new do |s|
   s.name        = "scavenger"
   s.version     = Scavenger::VERSION
-  s.authors     = ["Johan Halse"]
+  s.authors     = ["Johan Halse", "Matt Powell"]
   s.email       = ["johan.halse@varvet.com"]
   s.homepage    = "https://www.varvet.com"
   s.summary     = "A sweet SVG icon plugin for Rails"

@@ -5,6 +5,8 @@ class DummyIntegrationTest < ActionDispatch::IntegrationTest
     visit("/")
     assert page.has_css?("svg symbol#hejsna")
     assert page.has_css?("svg.hejsna")
+    assert page.has_css?("svg symbol#things--thing")
+    assert page.has_css?("svg.things--thing")
   end
 
   def test_prefix
